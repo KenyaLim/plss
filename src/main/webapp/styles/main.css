@@ -1,0 +1,42 @@
+:root {
+  --primary-color: #FF9800;
+  --secondary-color: #FFB74D;
+  --background-color: #FFF3E0;
+  --income-color: #4CAF50;
+  --expense-color: #E53935;
+}
+
+body {
+  background-color: var(--background-color);
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+.transaction-item {
+  padding: 15px;
+  margin: 10px;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.income {
+  background-color: var(--income-color);
+  color: white;
+}
+
+.expense {
+  background-color: var(--expense-color);
+  color: white;
+}
+
+.over-budget {
+  border: 2px solid var(--expense-color);
+}
+
+@media screen and (max-width: 768px) {
+  .transaction-item {
+    margin: 5px;
+    font-size: 14px;
+  }
+}
