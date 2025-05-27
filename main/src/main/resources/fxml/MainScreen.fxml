@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.chart.PieChart?>
+<?import javafx.scene.chart.LineChart?>
+<?import javafx.scene.chart.CategoryAxis?>
+<?import javafx.scene.chart.NumberAxis?>
+
+<VBox xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml" fx:controller="com.plss.MainScreenController" spacing="10" style="-fx-background-color: #f0f0f0;">
+    <padding>
+        <Insets top="20" right="20" bottom="20" left="20"/>
+    </padding>
+
+    <HBox spacing="10" alignment="CENTER">
+        <Label text="Saldo:" style="-fx-font-size: 18px;"/>
+        <Label fx:id="balanceLabel" style="-fx-font-size: 24px; -fx-font-weight: bold;"/>
+    </HBox>
+
+    <HBox spacing="10">
+        <Button text="+ Pemasukan" onAction="#handleAddIncome" style="-fx-background-color: #4CAF50; -fx-text-fill: white;"/>
+        <Button text="- Pengeluaran" onAction="#handleAddExpense" style="-fx-background-color: #f44336; -fx-text-fill: white;"/>
+        <Button text="Atur Target" onAction="#handleSetTarget" style="-fx-background-color: #2196F3; -fx-text-fill: white;"/>
+    </HBox>
+
+    <TabPane VBox.vgrow="ALWAYS">
+        <Tab text="Transaksi" closable="false">
+            <VBox spacing="10">
+                <HBox spacing="10" alignment="CENTER_LEFT">
+                    <DatePicker fx:id="startDate" promptText="Tanggal Mulai"/>
+                    <DatePicker fx:id="endDate" promptText="Tanggal Akhir"/>
+                    <ComboBox fx:id="categoryFilter" promptText="Kategori"/>
+                    <ComboBox fx:id="typeFilter" promptText="Tipe"/>
+                    <Button text="Filter" onAction="#handleFilter"/>
+                </HBox>
+                <TableView fx:id="transactionTable" VBox.vgrow="ALWAYS">
+                    <columns>
+                        <TableColumn text="Tanggal" fx:id="dateColumn"/>
+                        <TableColumn text="Tipe" fx:id="typeColumn"/>
+                        <TableColumn text="Kategori" fx:id="categoryColumn"/>
+                        <TableColumn text="Deskripsi" fx:id="descriptionColumn"/>
+                        <TableColumn text="Jumlah" fx:id="amountColumn"/>
+                        <TableColumn text="Aksi" fx:id="actionColumn"/>
+                    </columns>
+                </TableView>
+            </VBox>
+        </Tab>
+        <Tab text="Grafik" closable="false">
+            <VBox spacing="10">
+                <HBox spacing="10" VBox.vgrow="ALWAYS">
+                    <PieChart fx:id="categoryPieChart" title="Pengeluaran per Kategori" HBox.hgrow="ALWAYS"/>
+                    <LineChart fx:id="trendLineChart" title="Tren Keuangan" HBox.hgrow="ALWAYS">
+                        <xAxis><CategoryAxis label="Tanggal"/></xAxis>
+                        <yAxis><NumberAxis label="Jumlah"/></yAxis>
+                    </LineChart>
+                </HBox>
+                <ProgressBar fx:id="targetProgress" progress="0.0" maxWidth="Infinity"/>
+                <Label fx:id="targetLabel" text="Target Pengeluaran: Rp 0" style="-fx-font-size: 14px;"/>
+            </VBox>
+        </Tab>
+    </TabPane>
+</VBox>
