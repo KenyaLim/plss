@@ -55,6 +55,14 @@
                     <noManPages>true</noManPages>
                     <jlinkImageName>personal-finance</jlinkImageName>
                     <jlinkZipName>personal-finance</jlinkZipName>
+                    <jvmArgs>
+                        <jvmArg>--add-opens=java.base/java.lang=ALL-UNNAMED</jvmArg>
+                        <jvmArg>--add-opens=java.base/java.lang.reflect=ALL-UNNAMED</jvmArg>
+                        <jvmArg>--add-opens=java.base/java.util=ALL-UNNAMED</jvmArg>
+                        <jvmArg>--add-opens=javafx.graphics/com.sun.javafx.sg.prism=ALL-UNNAMED</jvmArg>
+                        <jvmArg>--add-opens=javafx.base/com.sun.javafx.event=ALL-UNNAMED</jvmArg>
+                        <jvmArg>--add-modules=javafx.controls,javafx.fxml</jvmArg>
+                    </jvmArgs>
                 </configuration>
             </plugin>
             <plugin>
